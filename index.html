@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecteur MP3</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./fonts/">
+  <style id="theme-sombre">
+    
+
+  /* Style pour le logo de base */
+  #logoImg {
+      width: 100px;
+      height: 100px;
+      transition: transform 0.1s ease-in-out;
+    }
+
+    /* Animation de vibration du logo */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px) rotate(-1deg); }
+      50% { transform: translateX(2px) rotate(1deg); }
+      75% { transform: translateX(-2px) rotate(-1deg); }
+      100% { transform: translateX(2px) rotate(1deg); }
+    }
+
+    /* Appliquer l'animation de vibration sur le logo de base */
+    #logoImg.vibrate {
+      animation: shake 0.1s infinite;
+    }
+
+    body {
+     font-family: "Cascadia Code", monospace;
+  font-weight: bold;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #181818;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #logoImg {
+      width: 100px;
+      height: 100px;
+      transition: transform 0.1s ease-in-out;
+    }
+
+    /* Animation de vibration du logo */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px) rotate(-1deg); }
+      50% { transform: translateX(2px) rotate(1deg); }
+      75% { transform: translateX(-2px) rotate(-1deg); }
+      100% { transform: translateX(2px) rotate(1deg); }
+    }
+
+    /* Appliquer l'animation de vibration sur le logo de base */
+    #logoImg.vibrate {
+      animation: shake 0.1s infinite;
+    }
+
+
+    /* Style pour le bouton d'accès à la page de vidéos */
+.music-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.music-btn:hover {
+  background-color: #45a049;
+}
+
+     
+    h1 {
+      /* Style pour le logo */
+      
+      align-items: center;
+     
+      margin: 0;
+      padding: 0px;
+    }
+
+    h1 img {
+      /* Style pour l'image du logo */
+      width: 100px;
+      height: 100px;
+      margin-right: 5px;
+    }
+
+    #mainContainer {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 20%;
+    }
+
+    
+    #musicList {
+     
+     
+      display:inline;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 20px;
+      justify-items: start;
+      flex: 1;
+      max-width: 600px;
+      list-style: none;
+      padding: 0;
+       margin-top: -10px;
+    }
+
+#musicList li {
+  margin-bottom: 10px; /* Espacement entre les éléments de la liste */
+}
+
+    li {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background-color: #282828;
+      padding: 10px;
+      margin-left: 5px;
+      margin-right: 5px;
+      border-radius: 5px;
+      
+    }
+
+    li img {
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+      border-radius: 5px
+    }
+
+    li a {
+      text-decoration: none;
+      color: inherit;
+      
+    }
+
+    li a:hover {
+      color: #1db954;
+      
+    }
+
+    #audioPlayerContainer {
+      background-color: #282828;
+      color: #fff;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+    }
+
+    #audioPlayer {
+      width: 30%;
+      display: flex;
+      margin: 0 auto;
+     
+    }
+
+    #progressBarContainer {
+      width: 100%;
+      background-color: #282828;
+      height: 10px;
+      margin-top: 20px;
+    }
+
+    #progressBar {
+      height: 100%;
+      background-color: #1db954;
+      width: 0%;
+    }
+
+input[type="search"] {
+  font-size: 16px;
+  padding: 8px;
+  border: none;
+  background-color: #282828;
+  color: #fff;
+  border-radius: 5px;
+  width: 300px;
+  position: relative;
+  Top:0px;
+right:50  px
+}
+
+#gifContainer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+    }
+
+    #gifContainer img {
+      width: 100%;
+      height: 100%;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <h1>
+    <div class="header">
+      <!-- Logo cliquable -->
+      <div class="header">
+        <!-- Logo cliquable -->
+        <a  class="logo-link">
+          <img src="https://media.discordapp.net/attachments/856635376788307999/1135978439241892031/iO_W-removebg-preview.png" alt="Logo" id="logoImg"> 
+          <input type="search" id="searchInput" placeholder="Search...">
+        </a>
+      </div>
+
+      <div id="gifContainer">
+        <img src="https://media.discordapp.net/attachments/1084187845960413285/1136708970761957536/giphy_1.gif" alt="GIF">
+      </div>
+
+      <script>
+     let clickCounter = 0;
+    const newLogo16Url = 'https://media.discordapp.net/attachments/965359525945311292/1136652554990784622/logo.gif?width=123&height=123';
+  
+
+    // Fonction pour changer le logo en fonction du nombre de clics
+    function changeLogo() {
+      const logoImg = document.getElementById('logoImg');
+      if (clickCounter >= 69) {
+        // Si le nombre de clics atteint 69, afficher le logo pour 69 clics
+        
+        // Cacher l'élément GIF après 3 secondes
+        setTimeout(() => {
+          document.getElementById('gifContainer').style.display = 'none';
+        }, 9000); // 3000 ms (3 secondes)
+      } else if (clickCounter >= 16 && clickCounter <= 68) {
+        // Si le nombre de clics est entre 16 et 68, afficher le logo pour 16 à 68 clics
+        logoImg.src = newLogo16Url;
+        // Supprimer la classe "vibrate" pour arrêter l'animation de vibration
+        logoImg.classList.remove("vibrate");
+      } else {
+        // Pour les autres cas, afficher le logo de base
+        logoImg.src = 'https://media.discordapp.net/attachments/856635376788307999/1135978439241892031/iO_W-removebg-preview.png';
+        // Appliquer la classe "vibrate" pour l'animation de vibration
+        logoImg.classList.add("vibrate");
+      }
+    }
+
+
+    // Écouteur d'événement pour les clics sur le logo
+    document.getElementById('logoImg').addEventListener('click', () => {
+      if (clickCounter < 69) {
+        clickCounter++;
+        changeLogo();
+      }
+      // Afficher l'élément GIF lorsque le nombre de clics atteint 69
+      if (clickCounter === 69) {
+        document.getElementById('gifContainer').style.display = 'block';
+      }
+    });
+      </script>
+
+    
+  </h1>
+  <div id="mainContainer">
+    
+    <ul id="musicList" class="scrollAnimation"></ul>
+    
+    
+    
+    
+
+    <div id="audioPlayerContainer">
+      <audio id="audioPlayer" controls>
+        
+        <source id="audioSource" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio HTML.
+      </audio>
+    </div>
+    
+  </div>
+
+  
+
+
+
+  
+    
+    <div id="progressBar"></div>
+
+
+
+  
+  <dialog id="lyricsDialog">
+    <h3>Paroles</h3>
+    <pre id="lyricsContent"></pre>
+    <button id="closeDialogBtn">Fermer</button>
+  </dialog>
+
+  <script>
+    const logo = document.getElementById('logo');
+    const musicList = document.getElementById('musicList');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioSource = document.getElementById('audioSource');
+
+
+
+   
+
+
+    const musicFiles = ["name_of_music.mp3",
+ADd name of music here
+     /* Ajoutez ici les noms de fichiers de musique */];
+    let currentMusicIndex = 0; // Index de la musique actuelle dans le tableau
+
+   
+
+    function playMusic(fileName) {
+      const musicUrl = `./music/${fileName}`;
+      audioSource.src = musicUrl;
+      audioPlayer.load();
+      audioPlayer.play();
+      
+      const currentMusicTitle = document.getElementById('currentMusicTitle');
+    currentMusicTitle.textContent = musicTitle;
+    }
+
+
+    function addMusicToList(fileName, musicTitle) {
+      const li = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = `./music/${fileName}`;
+      const iconUrl = getIconUrl(fileName);
+      link.innerHTML = `<img src="${iconUrl}" alt="Icon"><i class="fas fa-music"></i> ${fileName}`;
+      li.appendChild(link);
+      musicList.appendChild(li);
+
+
+      
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        playMusic(fileName, musicTitle);
+      });
+    }
+
+
+    
+    
+
+  
+
+    function playNextMusic() {
+      currentMusicIndex++;
+      if (currentMusicIndex >= musicFiles.length) {
+        // Si la liste de musique est terminée, revenir à la première musique
+        currentMusicIndex = 0;
+      }
+      const nextMusic = musicFiles[currentMusicIndex];
+      playMusic(nextMusic);
+    }
+
+    // Écouter l'événement 'ended' pour passer à la musique suivante une fois que la musique en cours est terminée
+    audioPlayer.addEventListener('ended', playNextMusic);
+
+    // Ajouter les musiques à la liste
+
+    
+    function getIconUrl(fileName) {
+      // Vérifier le nom du fichier pour sélectionner l'icône appropriée
+      if (fileName === 'name_of_music.mp3') {
+        return 'get_a_link_of_the_cover';
+      } // can do more
+
+    
+
+
+    
+
+
+    // Script de filtrage des éléments de la liste de musique
+    const searchInput = document.getElementById('searchInput');
+    const musicList2 = document.getElementById('musicList').getElementsByTagName('li');
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+
+      Array.from(musicList2).forEach((element) => {
+        const musicText = element.textContent.toLowerCase();
+        if (musicText.includes(searchTerm)) {
+          element.style.display = 'flex';
+        } else {
+          element.style.display = 'none';
+        }
+      });
+    });
+
+
+
+
+
+// Fonction pour passer à la musique suivante
+
+
+    function fetchMusicList() {
+      fetch('/get_music_list')
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(fileName => addMusicToList(fileName));
+        })
+        .catch(error => console.error('Erreur lors de la récupération de la liste de musique:', error));
+    }
+
+    
+
+    fetchMusicList();
+  </script>
+ 
+ <script src="https://cdn.jsdelivr.net/npm/discord-rpc"></script>
+ <script src="discord-rpc-handler.js"></script>
+</body>
+</html>
