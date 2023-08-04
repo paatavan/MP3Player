@@ -25,4 +25,4 @@ Now you're all set! Open your web browser and access the MP3Player website via t
 MP3Player revolutionizes the way you manage and enjoy your downloaded music. Its user-centric design and integration with SpotifyMate make importing and playing music a breeze. Say goodbye to scattered music files and disorganized playlists – MP3Player brings harmony to your music library.
 
 ## UI on Mobiles
-![Alt Text](https://media.discordapp.net/attachments/856635376788307999/1137015618818801724/image.png?width=309&height=682)
+![Alt Text](https://media.discordapp.net/attachments/856635376788307999/1137015618818801724/image.png?width=309&height=682) ![Alt Text](https://media.discordapp.net/attachments/856635376788307999/1137016908957364296/image.png?width=1329&height=683)
