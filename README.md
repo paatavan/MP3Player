@@ -1,6 +1,6 @@
 # MP3Player
 
-![MP3Player Logo](https://media.discordapp.net/attachments/856635376788307999/1135978439241892031/iO_W-removebg-preview.png){width100px height=100px}
+![MP3Player Logo](https://media.discordapp.net/attachments/856635376788307999/1135978439241892031/iO_W-removebg-preview.png)
 
 **MP3Player** is an innovative website designed to enhance your music listening experience. It provides a user-friendly platform where you can easily manage and play your downloaded music. Whether you want to enjoy your favorite tracks or discover new melodies, MP3Player has you covered.
 
