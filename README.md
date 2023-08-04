@@ -16,7 +16,7 @@
 
 6. **Package** : Make sure to download package with `npm i`
 
-6. **Launch the Server**: With the programming in place, it's time to launch the MP3Player server. Execute the `node server.js` command in your terminal. This action initiates the server and activates the website's functionality.
+7. **Launch the Server**: With the programming in place, it's time to launch the MP3Player server. Execute the `node server.js` command in your terminal. This action initiates the server and activates the website's functionality.
 
 Now you're all set! Open your web browser and access the MP3Player website via the provided local server address. You'll be greeted with your curated collection of music, complete with album covers and an intuitive interface for smooth navigation. Enjoy your tunes hassle-free!
 
